@@ -38,3 +38,7 @@ offset_left = 2.0
 offset_top = 348.0
 offset_right = 302.0
 offset_bottom = 648.0
+action_left = "move_left"
+action_right = "move_right"
+action_up = "move_up"
+action_down = "move_down"
