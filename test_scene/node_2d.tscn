@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://ctne6n7snswbk"]
+[gd_scene load_steps=7 format=4 uid="uid://ctne6n7snswbk"]
 
 [ext_resource type="Texture2D" uid="uid://cspqm3u638ds8" path="res://test_scene/tree_2.tres" id="1_ch6t4"]
 [ext_resource type="TileSet" uid="uid://cfvhlhwx5kfxj" path="res://test_scene/new_tile_set.tres" id="1_elfd7"]
 [ext_resource type="Texture2D" uid="uid://c1tx0rpx00qch" path="res://test_scene/tree_1.tres" id="1_jhx70"]
 [ext_resource type="Texture2D" uid="uid://c15y2q7ffidsw" path="res://test_scene/tree_3.tres" id="4_r40yy"]
 [ext_resource type="PackedScene" uid="uid://d03bvotq7tym5" path="res://hero/hero_scene.tscn" id="5_wejxr"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="6_8mixj"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -31,3 +32,9 @@ metadata/_edit_lock_ = true
 
 [node name="HeroScene" parent="." instance=ExtResource("5_wejxr")]
 position = Vector2(517, 306)
+
+[node name="Virtual Joystick" parent="." instance=ExtResource("6_8mixj")]
+offset_left = 2.0
+offset_top = 348.0
+offset_right = 302.0
+offset_bottom = 648.0
