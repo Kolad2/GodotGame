@@ -1,13 +1,23 @@
-[gd_scene load_steps=7 format=4 uid="uid://ctne6n7snswbk"]
+[gd_scene load_steps=5 format=4 uid="uid://ctne6n7snswbk"]
 
-[ext_resource type="Texture2D" uid="uid://cspqm3u638ds8" path="res://test_scene/tree_2.tres" id="1_ch6t4"]
 [ext_resource type="TileSet" uid="uid://cfvhlhwx5kfxj" path="res://test_scene/new_tile_set.tres" id="1_elfd7"]
-[ext_resource type="Texture2D" uid="uid://c1tx0rpx00qch" path="res://test_scene/tree_1.tres" id="1_jhx70"]
-[ext_resource type="Texture2D" uid="uid://c15y2q7ffidsw" path="res://test_scene/tree_3.tres" id="4_r40yy"]
+[ext_resource type="PackedScene" uid="uid://crcqgxbyhvtha" path="res://trees/tree.tscn" id="3_nxkwt"]
 [ext_resource type="PackedScene" uid="uid://d03bvotq7tym5" path="res://hero/hero_scene.tscn" id="5_wejxr"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="6_8mixj"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Virtual Joystick" parent="CanvasLayer" instance=ExtResource("6_8mixj")]
+offset_left = 2.0
+offset_top = -300.0
+offset_right = 302.0
+offset_bottom = 0.0
+action_left = "move_left"
+action_right = "move_right"
+action_up = "move_up"
+action_down = "move_down"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(531, 292)
@@ -15,31 +25,29 @@ tile_map_data = PackedByteArray("AAD7//7/AAAEAAcAAAD7////AAAAAAYAAAD7/wAAAAAAAAc
 tile_set = ExtResource("1_elfd7")
 metadata/_edit_lock_ = true
 
-[node name="Scene_Tree_1" type="Sprite2D" parent="."]
-position = Vector2(674, 295)
-texture = ExtResource("1_ch6t4")
-metadata/_edit_lock_ = true
+[node name="Node2D" type="Node2D" parent="."]
+y_sort_enabled = true
 
-[node name="Scene_Tree_2" type="Sprite2D" parent="."]
-position = Vector2(590, 137)
-texture = ExtResource("1_jhx70")
-metadata/_edit_lock_ = true
-
-[node name="Scene_Tree_3" type="Sprite2D" parent="."]
-position = Vector2(381, 319)
-texture = ExtResource("4_r40yy")
-metadata/_edit_lock_ = true
-
-[node name="HeroScene" parent="." instance=ExtResource("5_wejxr")]
+[node name="HeroScene" parent="Node2D" instance=ExtResource("5_wejxr")]
 position = Vector2(517, 306)
-direction = 2
+direction = 3
 
-[node name="Virtual Joystick" parent="." instance=ExtResource("6_8mixj")]
-offset_left = 2.0
-offset_top = 348.0
-offset_right = 302.0
-offset_bottom = 648.0
-action_left = "move_left"
-action_right = "move_right"
-action_up = "move_up"
-action_down = "move_down"
+[node name="Tree" parent="Node2D" instance=ExtResource("3_nxkwt")]
+position = Vector2(510, 428)
+metadata/_edit_lock_ = true
+
+[node name="Tree2" parent="Node2D" instance=ExtResource("3_nxkwt")]
+position = Vector2(784, 393)
+metadata/_edit_lock_ = true
+
+[node name="Tree3" parent="Node2D" instance=ExtResource("3_nxkwt")]
+position = Vector2(568, 145)
+metadata/_edit_lock_ = true
+
+[node name="Tree4" parent="Node2D" instance=ExtResource("3_nxkwt")]
+position = Vector2(384, 343)
+metadata/_edit_lock_ = true
+
+[node name="Tree5" parent="Node2D" instance=ExtResource("3_nxkwt")]
+position = Vector2(645, 279)
+metadata/_edit_lock_ = true

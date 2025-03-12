@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://crcqgxbyhvtha"]
+
+[ext_resource type="Script" uid="uid://so3klopik826" path="res://trees/sprite_updater.gd" id="1_71ypl"]
+[ext_resource type="Script" uid="uid://bf3p7400hgrvh" path="res://trees/object_script.gd" id="1_k7hq7"]
+[ext_resource type="Texture2D" uid="uid://c1tx0rpx00qch" path="res://trees/textures/tree_1.tres" id="2_k7hq7"]
+
+[node name="Tree" type="Node2D"]
+script = ExtResource("1_k7hq7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -25)
+texture = ExtResource("2_k7hq7")
+script = ExtResource("1_71ypl")
