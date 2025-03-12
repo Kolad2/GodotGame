@@ -32,6 +32,7 @@ metadata/_edit_lock_ = true
 
 [node name="HeroScene" parent="." instance=ExtResource("5_wejxr")]
 position = Vector2(517, 306)
+direction = 2
 
 [node name="Virtual Joystick" parent="." instance=ExtResource("6_8mixj")]
 offset_left = 2.0

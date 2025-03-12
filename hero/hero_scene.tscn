@@ -10,6 +10,6 @@ metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_uk5jc")
-animation = &"walk_down"
+animation = &"walk_up"
 speed_scale = 2.0
 script = ExtResource("2_fahc6")
