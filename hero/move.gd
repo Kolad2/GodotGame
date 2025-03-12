@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 
 enum Direction { NULL, LEFT, RIGHT, UP, DOWN }
 #enum Animation { STAND, WALK, RUN }
@@ -8,15 +8,16 @@ enum Direction { NULL, LEFT, RIGHT, UP, DOWN }
 @export var direction: Direction = Direction.DOWN
 
 func _process(delta):
-	var norm_v = get_norm_v()
-	var move_direction = get_direction(norm_v)
+	var speed = 100
+	var norm_speed = get_norm_velocity()
+	var move_direction = get_direction(norm_speed)
 	if move_direction == Direction.NULL:
 		set_stand_animation(direction)
 		return
 	else:
 		direction = move_direction
-	position["x"] = position["x"] + 1*norm_v["x"]
-	position["y"] = position["y"] + 1*norm_v["y"]
+	velocity = speed*norm_speed
+	move_and_slide()
 	set_walk_animation(direction)
 		
 
@@ -52,9 +53,7 @@ func get_direction(norm_v):
 		else:
 			return Direction.UP
 	
-	
-
-func get_norm_v():
+func get_norm_velocity():
 	var norm_dx = 0
 	var norm_dy = 0
 	if Input.is_action_pressed("move_up"):
@@ -65,6 +64,6 @@ func get_norm_v():
 		norm_dx = Input.get_action_strength("move_right")	
 	elif Input.is_action_pressed("move_left"):
 		norm_dx = -Input.get_action_strength("move_left")
-	return {"x": norm_dx, "y": norm_dy}
+	return Vector2(norm_dx, norm_dy)
 	
 	

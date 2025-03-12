@@ -7,9 +7,8 @@ var tree_uids = [
 	"uid://c15y2q7ffidsw"   # tree type 3
 ]
 
-@export var texture_id: int:
+@export var texture_id: int=0:
 	set(value):
-		print(value)
 		texture_id = clamp(value, 0, tree_uids.size() - 1)
 		texture = ResourceLoader.load(tree_uids[texture_id])
 		
