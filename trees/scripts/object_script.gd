@@ -10,7 +10,10 @@ extends Node2D
 			return
 		sprite.texture_id = value
 		texture_id = sprite.texture_id
+		#print(sprite.texture.get_width())
+		#print(sprite.texture.get_height() / 2)
 		
 	
 func _ready():
 	sprite.texture_id = texture_id
+	

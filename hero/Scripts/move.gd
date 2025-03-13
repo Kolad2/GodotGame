@@ -5,9 +5,23 @@ enum Direction { NULL, LEFT, RIGHT, UP, DOWN }
 
 # Сохраняем ссылку на AnimatedSprite2D
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var step_action_box: Area2D = $StepActionBox
 @export var direction: Direction = Direction.DOWN
 
-func _process(delta):
+
+func _ready():
+	step_action_box.body_entered.connect(_on_body_entered)
+
+
+func _on_body_entered(_body):
+	print(1)
+	self.set_collision_mask_value(1, false)
+	self.set_collision_mask_value(1, false)
+	self.set_collision_mask_value(2, true)
+	self.set_collision_layer_value(2, true)
+
+
+func _process(_delta):
 	var speed = 100
 	var norm_speed = get_norm_velocity()
 	var move_direction = get_direction(norm_speed)
@@ -19,6 +33,7 @@ func _process(delta):
 	velocity = speed*norm_speed
 	move_and_slide()
 	set_walk_animation(direction)
+	
 		
 
 func set_walk_animation(dir):
@@ -65,5 +80,4 @@ func get_norm_velocity():
 	elif Input.is_action_pressed("move_left"):
 		norm_dx = -Input.get_action_strength("move_left")
 	return Vector2(norm_dx, norm_dy)
-	
 	

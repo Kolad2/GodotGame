@@ -11,4 +11,6 @@ var tree_uids = [
 	set(value):
 		texture_id = clamp(value, 0, tree_uids.size() - 1)
 		texture = ResourceLoader.load(tree_uids[texture_id])
-		
+		var shift_y = - texture.get_height()
+		var shift_x = - texture.get_width() / 2
+		position = Vector2(shift_x, shift_y)

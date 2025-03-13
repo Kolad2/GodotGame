@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://d03bvotq7tym5"]
+[gd_scene load_steps=6 format=3 uid="uid://d03bvotq7tym5"]
 
-[ext_resource type="Script" uid="uid://bqnankan1yi04" path="res://hero/move.gd" id="1_askid"]
+[ext_resource type="Script" uid="uid://bqnankan1yi04" path="res://hero/Scripts/move.gd" id="1_askid"]
 [ext_resource type="SpriteFrames" uid="uid://b1cr6egu5v2ib" path="res://hero/new_sprite_frames.tres" id="1_uk5jc"]
-[ext_resource type="Script" uid="uid://dyirpa3ew5exl" path="res://hero/animated_sprite_2d.gd" id="2_fahc6"]
+[ext_resource type="Script" uid="uid://dyirpa3ew5exl" path="res://hero/Scripts/animated_sprite_2d.gd" id="2_fahc6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_askid"]
+radius = 8.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_askid"]
 height = 34.0
@@ -11,12 +14,20 @@ height = 34.0
 script = ExtResource("1_askid")
 metadata/_edit_lock_ = true
 
+[node name="StepActionBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="ActionShape" type="CollisionShape2D" parent="StepActionBox"]
+shape = SubResource("CircleShape2D_askid")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 31)
+visible = false
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_askid")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -35)
 sprite_frames = ExtResource("1_uk5jc")
 animation = &"walk_right"
 speed_scale = 2.0
