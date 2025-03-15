@@ -14,11 +14,18 @@ height = 34.0
 script = ExtResource("1_askid")
 metadata/_edit_lock_ = true
 
-[node name="StepActionBox" type="Area2D" parent="."]
+[node name="RoomInBox" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 4
 
-[node name="ActionShape" type="CollisionShape2D" parent="StepActionBox"]
+[node name="ActionShape" type="CollisionShape2D" parent="RoomInBox"]
+shape = SubResource("CircleShape2D_askid")
+
+[node name="RoomOutBox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="ActionShape" type="CollisionShape2D" parent="RoomOutBox"]
 shape = SubResource("CircleShape2D_askid")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -5,20 +5,25 @@ enum Direction { NULL, LEFT, RIGHT, UP, DOWN }
 
 # Сохраняем ссылку на AnimatedSprite2D
 @onready var animated_sprite = $AnimatedSprite2D
-@onready var step_action_box: Area2D = $StepActionBox
+@onready var room_in_box: Area2D = $RoomInBox
+@onready var room_out_box: Area2D = $RoomOutBox
 @export var direction: Direction = Direction.DOWN
 
 
 func _ready():
-	step_action_box.body_entered.connect(_on_body_entered)
+	room_in_box.body_entered.connect(_room_entered)
+	room_out_box.body_entered.connect(_room_left)
 
 
-func _on_body_entered(_body):
-	print(1)
-	self.set_collision_mask_value(1, false)
-	self.set_collision_mask_value(1, false)
-	self.set_collision_mask_value(2, true)
-	self.set_collision_layer_value(2, true)
+func _room_entered(body):
+	if body.z_index == self.z_index:
+		set_stairs_up()
+		# print("entered")
+	
+func _room_left(body):
+	if body.z_index < self.z_index:
+		set_stairs_down()
+		# print("left")
 
 
 func _process(_delta):
@@ -34,7 +39,22 @@ func _process(_delta):
 	move_and_slide()
 	set_walk_animation(direction)
 	
-		
+
+func set_stairs_down():
+	self.set_collision_mask_value(1, true)
+	self.set_collision_layer_value(1, true)
+	self.set_collision_mask_value(2, false)
+	self.set_collision_layer_value(2, false)
+	self.z_index = self.z_index - 1
+
+
+func set_stairs_up():
+	self.set_collision_mask_value(1, false)
+	self.set_collision_layer_value(1, false)
+	self.set_collision_mask_value(2, true)
+	self.set_collision_layer_value(2, true)
+	self.z_index = self.z_index + 1
+
 
 func set_walk_animation(dir):
 	var stand_animation = {
