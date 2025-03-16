@@ -9,10 +9,12 @@ enum Direction { NULL, LEFT, RIGHT, UP, DOWN }
 @onready var room_out_box: Area2D = $RoomOutBox
 @export var direction: Direction = Direction.DOWN
 
+# @onready var game_node = get_tree().get_root()
 
 func _ready():
 	room_in_box.body_entered.connect(_room_entered)
 	room_out_box.body_entered.connect(_room_left)
+	#call_deferred("emit_signal", "main_character_changed", self)
 
 
 func _room_entered(body):
@@ -91,13 +93,13 @@ func get_direction(norm_v):
 func get_norm_velocity():
 	var norm_dx = 0
 	var norm_dy = 0
-	if Input.is_action_pressed("move_up"):
-		norm_dy = -Input.get_action_strength("move_up")
-	elif Input.is_action_pressed("move_down"):
-		norm_dy = Input.get_action_strength("move_down")
-	if Input.is_action_pressed("move_right"):
-		norm_dx = Input.get_action_strength("move_right")	
-	elif Input.is_action_pressed("move_left"):
-		norm_dx = -Input.get_action_strength("move_left")
+	if Input.is_action_pressed("ui_up"):
+		norm_dy = -Input.get_action_strength("ui_up")
+	elif Input.is_action_pressed("ui_down"):
+		norm_dy = Input.get_action_strength("ui_down")
+	if Input.is_action_pressed("ui_right"):
+		norm_dx = Input.get_action_strength("ui_right")	
+	elif Input.is_action_pressed("ui_left"):
+		norm_dx = -Input.get_action_strength("ui_left")
 	return Vector2(norm_dx, norm_dy)
 	

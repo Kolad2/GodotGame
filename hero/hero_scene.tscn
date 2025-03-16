@@ -1,14 +1,15 @@
 [gd_scene load_steps=6 format=3 uid="uid://d03bvotq7tym5"]
 
 [ext_resource type="Script" uid="uid://bqnankan1yi04" path="res://hero/Scripts/move.gd" id="1_askid"]
-[ext_resource type="SpriteFrames" uid="uid://b1cr6egu5v2ib" path="res://hero/new_sprite_frames.tres" id="1_uk5jc"]
+[ext_resource type="SpriteFrames" uid="uid://b1cr6egu5v2ib" path="res://hero/famale_sprite.tres" id="1_uk5jc"]
 [ext_resource type="Script" uid="uid://dyirpa3ew5exl" path="res://hero/Scripts/animated_sprite_2d.gd" id="2_fahc6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_askid"]
 radius = 8.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_askid"]
-height = 34.0
+radius = 4.0
+height = 10.0
 
 [node name="HeroScene" type="CharacterBody2D"]
 script = ExtResource("1_askid")
@@ -29,13 +30,11 @@ collision_mask = 8
 shape = SubResource("CircleShape2D_askid")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_askid")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, -35)
+position = Vector2(0, -12)
 sprite_frames = ExtResource("1_uk5jc")
-animation = &"walk_right"
-speed_scale = 2.0
+animation = &"stand_down"
 script = ExtResource("2_fahc6")

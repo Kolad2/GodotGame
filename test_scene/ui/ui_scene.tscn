@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx5dhmwjsiatm"]
+
+[ext_resource type="Script" uid="uid://bu07iaw3172nw" path="res://test_scene/ui/camera_2d.gd" id="1_0na4o"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="2_fn6eu"]
+
+[node name="ui_layer" type="CanvasLayer"]
+follow_viewport_enabled = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(259, 181)
+zoom = Vector2(2, 2)
+script = ExtResource("1_0na4o")
+
+[node name="Virtual Joystick" parent="." instance=ExtResource("2_fn6eu")]
+anchors_preset = -1
+anchor_left = 0.146
+anchor_top = 0.789
+anchor_right = 0.146
+anchor_bottom = 0.789
+offset_left = -147.504
+offset_top = -146.08
+offset_right = 152.496
+offset_bottom = 153.92
