@@ -9,14 +9,15 @@ radius = 5.0
 height = 16.0
 
 [node name="Creep" type="CharacterBody2D"]
+slide_on_ceiling = false
+floor_stop_on_slope = false
 script = ExtResource("1_lbxpw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -10)
 sprite_frames = ExtResource("1_sxhe2")
 animation = &"stand_down"
-frame = 3
-frame_progress = 0.510229
+frame_progress = 0.720542
 script = ExtResource("2_l0b1j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -26,3 +27,11 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_l0b1j")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 40.0
+path_max_distance = 311.0
+path_postprocessing = 1
+avoidance_enabled = true
+radius = 20.0
+debug_enabled = true
+
+[node name="NavigationTimer" type="Timer" parent="."]

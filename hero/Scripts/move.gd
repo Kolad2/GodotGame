@@ -14,14 +14,27 @@ enum Direction { NULL, LEFT, RIGHT, UP, DOWN }
 func _ready():
 	room_in_box.body_entered.connect(_room_entered)
 	room_out_box.body_entered.connect(_room_left)
-	#call_deferred("emit_signal", "main_character_changed", self)
+	#SignalUtils.main_character_changed.emit(self)
+	# Создаем таймер 
+	var timer = Timer.new()
+	timer.wait_time = 1.0 # Задержка 1 секунда
+	timer.one_shot = true  # Таймер сработает только один раз
+	timer.timeout.connect(test)  # Подключаем сигнал timeout к функции
+	add_child(timer)  # Добавляем таймер в сцену
+	timer.start()
+
+func test():
+	var root = NodeRegistry.get_root()
+	root.main_character_changed.emit(self)
+	print("signal emmited")
 
 
 func _room_entered(body):
 	if body.z_index == self.z_index:
 		set_stairs_up()
 		# print("entered")
-	
+
+
 func _room_left(body):
 	if body.z_index < self.z_index:
 		set_stairs_down()

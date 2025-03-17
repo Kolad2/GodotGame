@@ -38,3 +38,6 @@ position = Vector2(0, -12)
 sprite_frames = ExtResource("1_uk5jc")
 animation = &"stand_down"
 script = ExtResource("2_fahc6")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
