@@ -16,4 +16,4 @@ extends Node2D
 	
 func _ready():
 	sprite.texture_id = texture_id
-	
+	self.add_to_group("navigation_group")

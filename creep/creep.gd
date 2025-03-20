@@ -25,11 +25,12 @@ func _process(_delta):
 	var _velocity = vec_direction * speed
 	navigation_agent.set_velocity(_velocity)
 	
-	var direction = utils.get_direction(vec_direction)
-	if direction == Utils.Direction.NULL:
+	var _direction = utils.get_direction(vec_direction)
+	if _direction == Utils.Direction.NULL:
 		utils.set_sprite_stand_animation(animated_sprite, self.direction)
 		return
-	self.direction = direction
+	else:
+		self.direction = _direction
 	utils.set_sprite_walk_animation(animated_sprite, self.direction)
 	
 	

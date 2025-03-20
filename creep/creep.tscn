@@ -6,7 +6,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l0b1j"]
 radius = 5.0
-height = 16.0
+height = 10.0
 
 [node name="Creep" type="CharacterBody2D"]
 slide_on_ceiling = false
@@ -18,10 +18,11 @@ direction = 1
 position = Vector2(0, -10)
 sprite_frames = ExtResource("1_sxhe2")
 animation = &"stand_left"
-frame_progress = 0.871459
+frame_progress = 0.941161
 script = ExtResource("2_l0b1j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_l0b1j")
 

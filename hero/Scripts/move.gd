@@ -29,9 +29,18 @@ func test():
 	print("signal emmited")
 
 
-func _room_entered(body):
+func _room_entered(body: TileMapLayer):
 	if body.z_index == self.z_index:
 		set_stairs_up()
+		print(body)
+		print(self)
+		var tile_position = body.local_to_map(self.position)
+		print(body.get_cell_atlas_coords(tile_position))
+		print(tile_position)
+		var tile_data = body.get_cell_tile_data(tile_position)
+		print(tile_data)
+		#var type = tile_data.get_custom_data("tile_type")
+		#print(type)
 		# print("entered")
 
 
@@ -80,6 +89,7 @@ func set_walk_animation(dir):
 		}
 	animated_sprite.animation = stand_animation[dir]
 
+
 func set_stand_animation(dir):
 	var stand_animation = {
 		Direction.RIGHT: "stand_right",
@@ -88,6 +98,7 @@ func set_stand_animation(dir):
 		Direction.DOWN: "stand_down",
 		}
 	animated_sprite.animation = stand_animation[dir]
+
 
 func get_direction(norm_v):
 	if norm_v["x"] == 0 and norm_v["y"] == 0:
@@ -102,7 +113,8 @@ func get_direction(norm_v):
 			return Direction.DOWN
 		else:
 			return Direction.UP
-	
+
+
 func get_norm_velocity():
 	var norm_dx = 0
 	var norm_dy = 0

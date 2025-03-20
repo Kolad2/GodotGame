@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://dyirpa3ew5exl" path="res://hero/Scripts/animated_sprite_2d.gd" id="2_fahc6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_askid"]
-radius = 8.0
+radius = 2.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_askid"]
 radius = 4.0
