@@ -12,24 +12,22 @@ height = 16.0
 slide_on_ceiling = false
 floor_stop_on_slope = false
 script = ExtResource("1_lbxpw")
+direction = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -10)
 sprite_frames = ExtResource("1_sxhe2")
-animation = &"stand_down"
-frame_progress = 0.720542
+animation = &"stand_left"
+frame_progress = 0.871459
 script = ExtResource("2_l0b1j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, -1)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_l0b1j")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_desired_distance = 40.0
+target_desired_distance = 5.0
 path_max_distance = 311.0
-path_postprocessing = 1
 avoidance_enabled = true
 radius = 20.0
 debug_enabled = true
