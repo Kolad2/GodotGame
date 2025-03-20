@@ -14,7 +14,7 @@ func _ready() -> void:
 	cover_tile_floor_2.tile_set = tile_set_floor_2
 	self.add_to_group("navigation_group")
 	#
-	test(wall_tile_floor_1)
+	#test(wall_tile_floor_1)
 	
 
 func set_tile_set_floor_2(tile_set):
@@ -30,4 +30,4 @@ func test(tilemap: TileMapLayer):
 	for cell in cells:
 		var tiledata = tilemap.get_cell_tile_data(cell)
 		var tile_type = tiledata.get_custom_data("tile_type")
-		print(tiledata.get_size())
+		#print(tiledata.get_size())
