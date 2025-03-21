@@ -13,8 +13,6 @@ func _ready() -> void:
 	wall_tile_floor_2.tile_set = tile_set_floor_2
 	cover_tile_floor_2.tile_set = tile_set_floor_2
 	self.add_to_group("navigation_group")
-	#
-	#test(wall_tile_floor_1)
 	
 
 func set_tile_set_floor_2(tile_set):
@@ -24,10 +22,3 @@ func set_tile_set_floor_2(tile_set):
 	tile_set.set_physics_layer_collision_layer(1, 0)
 	tile_set.set_physics_layer_collision_mask(1, 0)
 	return tile_set
-
-func test(tilemap: TileMapLayer):
-	var cells = tilemap.get_used_cells()
-	for cell in cells:
-		var tiledata = tilemap.get_cell_tile_data(cell)
-		var tile_type = tiledata.get_custom_data("tile_type")
-		#print(tiledata.get_size())
