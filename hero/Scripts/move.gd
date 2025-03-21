@@ -23,6 +23,7 @@ func _ready():
 	add_child(timer)  # Добавляем таймер в сцену
 	timer.start()
 
+
 func test():
 	var root = NodeRegistry.get_root()
 	root.main_character_changed.emit(self)
@@ -31,17 +32,18 @@ func test():
 
 func _room_entered(body: TileMapLayer):
 	if body.z_index == self.z_index:
-		set_stairs_up()
-		print(body)
-		print(self)
 		var tile_position = body.local_to_map(self.position)
-		print(body.get_cell_atlas_coords(tile_position))
-		print(tile_position)
-		var tile_data = body.get_cell_tile_data(tile_position)
-		print(tile_data)
-		#var type = tile_data.get_custom_data("tile_type")
-		#print(type)
-		# print("entered")
+		var tile_type = body.get_tile_type(tile_position)
+		if tile_type == "stairs":
+			self.set_stairs_up()
+			print("stairs_up")
+		
+		if tile_type == "door":
+			print("door_entered")
+			body.get_parent().hide_floor_2()
+			body.get_parent().hide_floor_3()
+		
+
 
 
 func _room_left(body):
