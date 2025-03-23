@@ -1,4 +1,4 @@
-extends TileMapLayer
+extends Room
 
 var cell_cite_big_tile_cell = {}
 

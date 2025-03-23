@@ -98,10 +98,13 @@ pointing/emulate_mouse_from_touch=false
 
 [layer_names]
 
-2d_physics/layer_1="collision_down"
-2d_physics/layer_2="collision_up"
-2d_physics/layer_3="stairs_up"
-2d_physics/layer_4="stairs_down"
+2d_physics/layer_1="floor_0"
+2d_physics/layer_2="floor_1"
+2d_physics/layer_3="floor_2"
+2d_physics/layer_4="floor_3"
+2d_physics/layer_5="room"
+2d_physics/layer_6="stairs_down"
+2d_physics/layer_7="stairs_up"
 
 [rendering]
 

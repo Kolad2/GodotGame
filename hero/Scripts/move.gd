@@ -5,16 +5,20 @@ enum Direction { NULL, LEFT, RIGHT, UP, DOWN }
 
 # Сохраняем ссылку на AnimatedSprite2D
 @onready var animated_sprite = $AnimatedSprite2D
-@onready var room_in_box: Area2D = $RoomInBox
-@onready var room_out_box: Area2D = $RoomOutBox
+@onready var area_room: Area2D = $RoomHitBox
+@onready var area_stairs: Area2D = $StairsHitBox
 @export var direction: Direction = Direction.DOWN
-
+@export var height: float = 0
 # @onready var game_node = get_tree().get_root()
 
 func _ready():
-	room_in_box.body_entered.connect(_room_entered)
-	room_out_box.body_entered.connect(_room_left)
-	#SignalUtils.main_character_changed.emit(self)
+	# Room hit box
+	area_room.body_entered.connect(_room_entered)
+	area_room.body_exited.connect(_room_left)
+	# Stairs hit box
+	area_stairs.body_entered.connect(_stairs_entered)
+	area_stairs.body_exited.connect(_stairs_left)
+	#
 	# Создаем таймер 
 	var timer = Timer.new()
 	timer.wait_time = 1.0 # Задержка 1 секунда
@@ -30,26 +34,34 @@ func test():
 	print("signal emmited")
 
 
-func _room_entered(body: TileMapLayer):
-	if body.z_index == self.z_index:
-		var tile_position = body.local_to_map(self.position)
-		var tile_type = body.get_tile_type(tile_position)
-		if tile_type == "stairs":
-			self.set_stairs_up()
-			print("stairs_up")
+func _room_entered(room: Node2D):
+	if room is Room:
+		if self.height == room.get_floor():
+			print("room_entered")
+			room.building.hide_upper_floors(self.z_index)
+		if (room.get_floor() + 1 > self.height) and (self.height > room.get_floor()):
+			pass
+
+func _room_left(room: Node2D):
+	if room is Room:
+		if self.height == room.get_floor():
+			print("room_left")
+			room.building.show_upper_floors(self.z_index)
+
+
+func _stairs_entered(room: Node2D):
+	if room is Room:
+		print("stairs_entered")
+		var floor_num = room.get_floor()
+		self.set_stairs_up()
 		
-		if tile_type == "door":
-			print("door_entered")
-			body.get_parent().hide_floor_2()
-			body.get_parent().hide_floor_3()
-		
 
-
-
-func _room_left(body):
-	if body.z_index < self.z_index:
-		set_stairs_down()
-		# print("left")
+func _stairs_left(room: Node2D):
+	if room is Room:
+		if room.z_index == self.height:
+			pass
+		if room.z_index == self.height:
+			self.set_stairs_down()
 
 
 func _process(_delta):
@@ -64,14 +76,6 @@ func _process(_delta):
 	velocity = speed*norm_speed
 	move_and_slide()
 	set_walk_animation(direction)
-	
-
-func set_stairs_down():
-	self.set_collision_mask_value(1, true)
-	self.set_collision_layer_value(1, true)
-	self.set_collision_mask_value(2, false)
-	self.set_collision_layer_value(2, false)
-	self.z_index = self.z_index - 1
 
 
 func set_stairs_up():
@@ -80,6 +84,16 @@ func set_stairs_up():
 	self.set_collision_mask_value(2, true)
 	self.set_collision_layer_value(2, true)
 	self.z_index = self.z_index + 1
+	self.height = self.z_index - 0.5
+
+
+func set_stairs_down():
+	self.set_collision_mask_value(1, true)
+	self.set_collision_layer_value(1, true)
+	self.set_collision_mask_value(2, false)
+	self.set_collision_layer_value(2, false)
+	self.z_index = self.z_index - 1
+	self.height = self.z_index
 
 
 func set_walk_animation(dir):
