@@ -6,18 +6,22 @@ enum Direction { NULL, LEFT, RIGHT, UP, DOWN }
 # Сохраняем ссылку на AnimatedSprite2D
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var area_room: Area2D = $RoomHitBox
-@onready var area_stairs: Area2D = $StairsHitBox
+@onready var area_stairs_lower: Area2D = $StairsLowerHitBox
+@onready var area_stairs_upper: Area2D = $StairsUpperHitBox
 @export var direction: Direction = Direction.DOWN
-@export var height: float = 0
+# @export var height: float = 0
 # @onready var game_node = get_tree().get_root()
 
 func _ready():
 	# Room hit box
 	area_room.body_entered.connect(_room_entered)
 	area_room.body_exited.connect(_room_left)
-	# Stairs hit box
-	area_stairs.body_entered.connect(_stairs_entered)
-	area_stairs.body_exited.connect(_stairs_left)
+	# Stairs lower hit box
+	area_stairs_lower.body_entered.connect(_stairs_lower_entered)
+	area_stairs_lower.body_exited.connect(_stairs_lower_left)
+	# Stairs upper hit box
+	area_stairs_upper.body_entered.connect(_stairs_upper_entered)
+	area_stairs_upper.body_exited.connect(_stairs_upper_left)
 	#
 	# Создаем таймер 
 	var timer = Timer.new()
@@ -39,8 +43,7 @@ func _room_entered(room: Node2D):
 		if self.height == room.get_floor():
 			print("room_entered")
 			room.building.hide_upper_floors(self.z_index)
-		if (room.get_floor() + 1 > self.height) and (self.height > room.get_floor()):
-			pass
+			
 
 func _room_left(room: Node2D):
 	if room is Room:
@@ -49,20 +52,28 @@ func _room_left(room: Node2D):
 			room.building.show_upper_floors(self.z_index)
 
 
-func _stairs_entered(room: Node2D):
+func _stairs_lower_entered(room: Node2D):
 	if room is Room:
 		print("stairs_entered")
 		var floor_num = room.get_floor()
 		self.set_stairs_up()
 		
 
-func _stairs_left(room: Node2D):
+func _stairs_lower_left(room: Node2D):
 	if room is Room:
-		if room.z_index == self.height:
-			pass
 		if room.z_index == self.height:
 			self.set_stairs_down()
 
+
+func _stairs_upper_entered(room: Node2D):
+	if room is Room:
+		if (room.get_floor() + 1 > self.height) and (self.height > room.get_floor()):
+			pass
+	
+	
+func _stairs_upper_left(room: Node2D):
+	if room is Room:
+		pass
 
 func _process(_delta):
 	var speed = 100
