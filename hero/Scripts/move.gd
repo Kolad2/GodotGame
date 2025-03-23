@@ -6,8 +6,8 @@ enum Direction { NULL, LEFT, RIGHT, UP, DOWN }
 # Сохраняем ссылку на AnimatedSprite2D
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var area_room: Area2D = $RoomHitBox
-@onready var area_stairs_lower: Area2D = $StairsLowerHitBox
-@onready var area_stairs_upper: Area2D = $StairsUpperHitBox
+@onready var area_stairs_lower: Area2D = $HitBox_StairsLower
+@onready var area_stairs_upper: Area2D = $HitBox_StairsUpper
 @export var direction: Direction = Direction.DOWN
 # @export var height: float = 0
 # @onready var game_node = get_tree().get_root()
