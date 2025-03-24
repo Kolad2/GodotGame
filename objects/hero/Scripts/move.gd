@@ -53,14 +53,14 @@ func _stairs_descented(_room: Node2D):
 
 func _process(_delta):
 	var speed = 100
-	var norm_speed = get_norm_velocity()
-	var move_direction = get_direction(norm_speed)
+	var move_input = GameInput.get_move_input()
+	var move_direction = get_direction(move_input)
 	if move_direction == Direction.NULL:
 		set_stand_animation(direction)
 		return
 	else:
 		direction = move_direction
-	velocity = speed*norm_speed
+	velocity = speed*move_input
 	move_and_slide()
 	set_walk_animation(direction)
 
@@ -116,18 +116,4 @@ func get_direction(norm_v):
 			return Direction.DOWN
 		else:
 			return Direction.UP
-
-
-func get_norm_velocity():
-	var norm_dx = 0
-	var norm_dy = 0
-	if Input.is_action_pressed("ui_up"):
-		norm_dy = -Input.get_action_strength("ui_up")
-	elif Input.is_action_pressed("ui_down"):
-		norm_dy = Input.get_action_strength("ui_down")
-	if Input.is_action_pressed("ui_right"):
-		norm_dx = Input.get_action_strength("ui_right")	
-	elif Input.is_action_pressed("ui_left"):
-		norm_dx = -Input.get_action_strength("ui_left")
-	return Vector2(norm_dx, norm_dy)
 	

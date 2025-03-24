@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://d03bvotq7tym5"]
 
-[ext_resource type="Script" uid="uid://bqnankan1yi04" path="res://hero/Scripts/move.gd" id="1_askid"]
-[ext_resource type="SpriteFrames" uid="uid://b1cr6egu5v2ib" path="res://hero/famale_sprite.tres" id="1_uk5jc"]
-[ext_resource type="Shape2D" uid="uid://bb561yjrcmqrw" path="res://unit/step_hit_box.tres" id="2_83s5r"]
-[ext_resource type="Script" uid="uid://dyirpa3ew5exl" path="res://hero/Scripts/animated_sprite_2d.gd" id="2_fahc6"]
-[ext_resource type="Script" uid="uid://dfjpmim7pmhph" path="res://unit/scripts/room_agent.gd" id="3_83s5r"]
-[ext_resource type="Script" uid="uid://b2nnxpxess4v2" path="res://unit/scripts/stairs_agent.gd" id="5_h4i5v"]
+[ext_resource type="Script" uid="uid://bqnankan1yi04" path="res://objects/hero/Scripts/move.gd" id="1_askid"]
+[ext_resource type="SpriteFrames" uid="uid://b1cr6egu5v2ib" path="res://objects/hero/famale_sprite.tres" id="1_uk5jc"]
+[ext_resource type="Shape2D" uid="uid://bb561yjrcmqrw" path="res://objects/unit/step_hit_box.tres" id="2_83s5r"]
+[ext_resource type="Script" uid="uid://dyirpa3ew5exl" path="res://objects/hero/Scripts/animated_sprite_2d.gd" id="2_fahc6"]
+[ext_resource type="Script" uid="uid://dfjpmim7pmhph" path="res://objects/unit/scripts/room_agent.gd" id="3_83s5r"]
+[ext_resource type="Script" uid="uid://b2nnxpxess4v2" path="res://objects/unit/scripts/stairs_agent.gd" id="5_h4i5v"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_askid"]
 radius = 4.0

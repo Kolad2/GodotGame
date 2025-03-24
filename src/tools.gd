@@ -22,6 +22,9 @@ static func get_direction(velocity: Vector2):
 		else:
 			return Direction.UP
 
+static func get_faicing():
+	pass
+
 static func set_sprite_walk_animation(animated_sprite: AnimatedSprite2D, dir: Direction):
 	var walk_animation = {
 		Direction.RIGHT: "walk_right",

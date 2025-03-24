@@ -25,8 +25,6 @@ func _ready() -> void:
 			tilemaps_floor_2.append(child)
 		if child.z_index == 2:
 			tilemaps_floor_3.append(child)
-			
-		#print("vl", child.visibility_layer)
 	
 
 func hide_floor_2():

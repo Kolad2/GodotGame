@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://b5gjy82f3k5no"]
 
-[ext_resource type="Script" uid="uid://ccm6ktrduhjml" path="res://creep/creep.gd" id="1_lbxpw"]
-[ext_resource type="SpriteFrames" uid="uid://cy4abvmbv3q6g" path="res://creep/ork.tres" id="1_sxhe2"]
-[ext_resource type="Script" uid="uid://c5duh118hyjg5" path="res://creep/animated_sprite_2d.gd" id="2_l0b1j"]
+[ext_resource type="Script" uid="uid://ccm6ktrduhjml" path="res://objects/creep/creep.gd" id="1_lbxpw"]
+[ext_resource type="SpriteFrames" uid="uid://cy4abvmbv3q6g" path="res://objects/creep/ork.tres" id="1_sxhe2"]
+[ext_resource type="Script" uid="uid://c5duh118hyjg5" path="res://objects/creep/animated_sprite_2d.gd" id="2_l0b1j"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l0b1j"]
 radius = 5.0
@@ -18,7 +18,7 @@ direction = 1
 position = Vector2(0, -10)
 sprite_frames = ExtResource("1_sxhe2")
 animation = &"stand_left"
-frame_progress = 0.932882
+frame_progress = 0.721514
 script = ExtResource("2_l0b1j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

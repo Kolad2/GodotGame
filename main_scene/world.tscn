@@ -1,13 +1,13 @@
 [gd_scene load_steps=21 format=4 uid="uid://ddp21if3hoxl3"]
 
-[ext_resource type="Script" uid="uid://r1xnypf3l6mh" path="res://test_scene/test_floors.gd" id="1_lggmv"]
+[ext_resource type="Script" uid="uid://r1xnypf3l6mh" path="res://main_scene/test_floors.gd" id="1_lggmv"]
 [ext_resource type="TileSet" uid="uid://d2ki4qat4ap4d" path="res://tile_set/stone_tile_set.tres" id="1_vmfcw"]
-[ext_resource type="Script" uid="uid://b0hfvi0hnn4pm" path="res://building/scripts/building.gd" id="1_x56c6"]
-[ext_resource type="Script" uid="uid://bb0mbalpshrkc" path="res://building/room/scripts/room.gd" id="2_08mus"]
-[ext_resource type="PackedScene" uid="uid://b5gjy82f3k5no" path="res://creep/creep.tscn" id="2_boupy"]
-[ext_resource type="PackedScene" uid="uid://d03bvotq7tym5" path="res://hero/hero_scene.tscn" id="3_21nl1"]
+[ext_resource type="Script" uid="uid://b0hfvi0hnn4pm" path="res://objects/building/scripts/building.gd" id="1_x56c6"]
+[ext_resource type="Script" uid="uid://bb0mbalpshrkc" path="res://objects/building/room/scripts/room.gd" id="2_08mus"]
+[ext_resource type="PackedScene" uid="uid://b5gjy82f3k5no" path="res://objects/creep/creep.tscn" id="2_boupy"]
+[ext_resource type="PackedScene" uid="uid://d03bvotq7tym5" path="res://objects/hero/hero_scene.tscn" id="3_21nl1"]
 [ext_resource type="Script" uid="uid://cul7rt2073tyd" path="res://tile_set/scripts/tilemaplayer.gd" id="3_bl5ft"]
-[ext_resource type="PackedScene" uid="uid://crcqgxbyhvtha" path="res://trees/tree.tscn" id="4_f4gjm"]
+[ext_resource type="PackedScene" uid="uid://crcqgxbyhvtha" path="res://objects/trees/tree.tscn" id="4_f4gjm"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lggmv"]
 vertices = PackedVector2Array(76, 554, 76, 578, 36, 578, -76, 554, 36, 610, 12, 610, -76, 770, 12, 770, 716, 106, 716, 418, 532, 418, 532, 410, 428, 410, 428, 418, 340, 418, 340, 258, 316, 258, 316, 226, 268, 226, 268, 258, 148, 258, 148, 106, 186.758, 561, 484, 522, 532, 522, 317.07, 702.102, 306.883, 691.953, 1045.88, -149.281, 1039.12, 995.406, 788, 490, 788, 58, -485.992, -171.68, 76, 58, 320.758, 716, 317.078, 729.883, -431.898, 952.539, -148, 506, 159, 533.219, 148, 536.172, 148, 506, 148, 714, 148, 585.828, 159, 588.758, 76, 330, 268, 330, 268, 490, 183.07, 547.102, 172.883, 536.953, 428, 490, 428, 522, 476, 522, 476, 458, 484, 458, 84, 842, 84, 714, 92, 714, 92, 650, 100, 650, 100, 714, 532, 490, 293, 688.219, 183.078, 574.883, 279.102, 691.953, 172.883, 585.078, 268.953, 702.102, 306.883, 740.078, 199.078, 802.883, 202.758, 789, 293, 743.758, 161.102, 764.953, 150.953, 775.102, 265.219, 716, 268.953, 729.883, 199.07, 775.102, 188.883, 764.953, 279.102, 740.07, 175, 761.219, 147.219, 789, 150.953, 802.883, 161.102, 813.07, 188.883, 813.078, -148, 842, 175, 816.758)
@@ -18,11 +18,11 @@ source_geometry_mode = 1
 source_geometry_group_name = &"navigation_group"
 agent_radius = 20.0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x56c6"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_prmo1"]
 load_path = "res://.godot/imported/TX Tileset Wall.png-2d636c3e12f51d7620b496ad9232a3c2.ctex"
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_brnm3"]
-texture = SubResource("CompressedTexture2D_x56c6")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3cplo"]
+texture = SubResource("CompressedTexture2D_prmo1")
 texture_region_size = Vector2i(32, 32)
 1:2/0 = 0
 1:2/0/z_index = 1
@@ -220,11 +220,11 @@ texture_region_size = Vector2i(32, 32)
 4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -16, 8, -16, 8, -8, 16, -8)
 4:4/0/custom_data_0 = "wall"
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mko3l"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nghjj"]
 load_path = "res://.godot/imported/TX Struct.png-4e34c551cc2da20d0992268f1fe6230a.ctex"
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kmmpe"]
-texture = SubResource("CompressedTexture2D_mko3l")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s326q"]
+texture = SubResource("CompressedTexture2D_nghjj")
 texture_region_size = Vector2i(32, 32)
 1:1/size_in_atlas = Vector2i(2, 3)
 1:1/0 = 0
@@ -261,11 +261,11 @@ texture_region_size = Vector2i(32, 32)
 7:1/0/physics_layer_4/polygon_0/points = PackedVector2Array(-40, -72, 8, -72, 8, -16, -40, -16)
 7:1/0/custom_data_0 = "stairs"
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jsxwp"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_btyxc"]
 load_path = "res://.godot/imported/TX Tileset Grass.png-70ec6f8e1ded71cd887891d7201db32b.ctex"
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hgsxl"]
-texture = SubResource("CompressedTexture2D_jsxwp")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qfhx1"]
+texture = SubResource("CompressedTexture2D_btyxc")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_2/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -460,11 +460,11 @@ texture_region_size = Vector2i(32, 32)
 7:7/0/physics_layer_2/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 7:7/0/custom_data_0 = "floor"
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ac3lv"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7w6jk"]
 load_path = "res://.godot/imported/TX Tileset Stone Ground.png-5b53cbc179b20a50e3c4e20d5b19a3c4.ctex"
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nbyr7"]
-texture = SubResource("CompressedTexture2D_ac3lv")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p2iay"]
+texture = SubResource("CompressedTexture2D_7w6jk")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/custom_data_0 = "floor"
@@ -567,11 +567,11 @@ texture_region_size = Vector2i(32, 32)
 7:7/0 = 0
 7:7/0/custom_data_0 = "floor"
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_da3vi"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_upu5l"]
 load_path = "res://.godot/imported/TX Tileset extend.png-e5a675b62b18bd00986d7db2ecb50e71.ctex"
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tyoll"]
-texture = SubResource("CompressedTexture2D_da3vi")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yff5l"]
+texture = SubResource("CompressedTexture2D_upu5l")
 texture_region_size = Vector2i(32, 32)
 1:1/size_in_atlas = Vector2i(1, 2)
 1:1/0 = 0
@@ -602,7 +602,7 @@ texture_region_size = Vector2i(32, 32)
 13:4/0 = 0
 13:4/0/physics_layer_2/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
-[sub_resource type="TileSet" id="TileSet_shl6a"]
+[sub_resource type="TileSet" id="TileSet_mrqfi"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 2
@@ -616,11 +616,11 @@ physics_layer_4/collision_layer = 64
 physics_layer_4/collision_mask = 64
 custom_data_layer_0/name = "tile_type"
 custom_data_layer_0/type = 4
-sources/0 = SubResource("TileSetAtlasSource_brnm3")
-sources/1 = SubResource("TileSetAtlasSource_kmmpe")
-sources/2 = SubResource("TileSetAtlasSource_hgsxl")
-sources/3 = SubResource("TileSetAtlasSource_nbyr7")
-sources/4 = SubResource("TileSetAtlasSource_tyoll")
+sources/0 = SubResource("TileSetAtlasSource_3cplo")
+sources/1 = SubResource("TileSetAtlasSource_s326q")
+sources/2 = SubResource("TileSetAtlasSource_qfhx1")
+sources/3 = SubResource("TileSetAtlasSource_p2iay")
+sources/4 = SubResource("TileSetAtlasSource_yff5l")
 
 [node name="world" type="Node2D"]
 
@@ -677,7 +677,7 @@ visibility_layer = 2
 z_index = 1
 z_as_relative = false
 tile_map_data = PackedByteArray("AAAJAAsAAgAAAAAAAAAJAAwAAgAAAAEAAAAJAA0AAgAAAAIAAAAJAA4AAgAAAAMAAAAKAAsAAgABAAAAAAAKAAwAAgABAAEAAAAKAA0AAgABAAIAAAAKAA4AAgABAAMAAAALAAsAAgACAAAAAAALAAwAAgACAAEAAAAMAAwAAgADAAEAAAANAAwAAgAAAAEAAAAOAAwAAgABAAEAAAAOAA0AAgABAAIAAAAOAA4AAgABAAMAAAAPAAwAAgAAAAIAAAAPAA0AAgAAAAMAAAAJAA8AAgAAAAAAAAAJABAAAgAAAAEAAAAJABEAAgAAAAIAAAAJABIAAgAAAAMAAAAKAA8AAgABAAAAAAAKABAAAgABAAEAAAAKABEAAgABAAIAAAAKABIAAgABAAMAAAALABAAAgACAAEAAAALABEAAgACAAIAAAALABIAAgACAAMAAAAMABAAAgADAAEAAAAMABEAAgADAAIAAAAMABIAAgADAAMAAAANABAAAgAAAAEAAAANABEAAgAAAAIAAAANABIAAgAAAAMAAAAOAA8AAgABAAAAAAAOABAAAgABAAEAAAAOABEAAgABAAIAAAAOABIAAgABAAMAAAAMAAsAAgABAAAAAAANAAsAAgACAAMAAAAPAAsAAgADAAMAAAAOAAsAAgAAAAAAAAAQAA0AAgAAAAMAAAAQAAwAAgAAAAEAAAAQAAsAAgABAAEAAAA=")
-tile_set = SubResource("TileSet_shl6a")
+tile_set = SubResource("TileSet_mrqfi")
 metadata/_edit_lock_ = true
 
 [node name="MapСoverFloor3" type="TileMapLayer" parent="TileMap"]
@@ -692,7 +692,7 @@ metadata/_edit_lock_ = true
 visibility_layer = 2
 z_index = 1
 tile_map_data = PackedByteArray("AAALABEAAAABAAMAAAAMABEAAAACAAMAAAANABEAAAADAAMAAAANAA8AAAADAAIAAAANAA4AAAADAAIAAAANAA0AAAADAAEAAAAMAA0AAAACAAEAAAALAA0AAAABAAEAAAALAA4AAAABAAIAAAALAA8AAAABAAIAAAA=")
-tile_set = SubResource("TileSet_shl6a")
+tile_set = SubResource("TileSet_mrqfi")
 metadata/_edit_lock_ = true
 
 [node name="WallMapFloor1" type="TileMapLayer" parent="TileMap"]

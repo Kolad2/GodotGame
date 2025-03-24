@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://crcqgxbyhvtha"]
 
-[ext_resource type="Script" uid="uid://bf3p7400hgrvh" path="res://trees/scripts/object_script.gd" id="1_k7hq7"]
-[ext_resource type="PackedScene" uid="uid://cthwujfclpe7q" path="res://trees/nodes/sprite_2d.tscn" id="2_71ypl"]
-[ext_resource type="Texture2D" uid="uid://c15y2q7ffidsw" path="res://trees/textures/tree_3.tres" id="3_k7hq7"]
+[ext_resource type="Script" uid="uid://bf3p7400hgrvh" path="res://objects/trees/scripts/object_script.gd" id="1_k7hq7"]
+[ext_resource type="PackedScene" uid="uid://cthwujfclpe7q" path="res://objects/trees/nodes/sprite_2d.tscn" id="2_71ypl"]
+[ext_resource type="Texture2D" uid="uid://c15y2q7ffidsw" path="res://objects/trees/textures/tree_3.tres" id="3_k7hq7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_71ypl"]
 radius = 7.07107

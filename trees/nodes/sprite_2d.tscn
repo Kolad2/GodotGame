@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://cthwujfclpe7q"]
-
-[ext_resource type="Texture2D" uid="uid://c1tx0rpx00qch" path="res://trees/textures/tree_1.tres" id="1_4qxw8"]
-[ext_resource type="Script" uid="uid://so3klopik826" path="res://trees/scripts/sprite_updater.gd" id="2_elyb4"]
-
-[node name="Sprite2D" type="Sprite2D"]
-texture = ExtResource("1_4qxw8")
-script = ExtResource("2_elyb4")
