@@ -2,7 +2,11 @@ extends Object
 class_name Utils
 
 enum Direction { NULL, LEFT, RIGHT, UP, DOWN }
-
+enum Faicing {
+	NULL,
+	LEFT, DOWN_LEFT, DOWN, DOWN_RIGHT,
+	RIGHT, TOP_RIGHT, TOP, TOP_LEFT
+	}
 
 static func get_direction(velocity: Vector2):
 	if velocity.x == 0 and velocity.y == 0:

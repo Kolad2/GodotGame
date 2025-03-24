@@ -18,7 +18,7 @@ direction = 1
 position = Vector2(0, -10)
 sprite_frames = ExtResource("1_sxhe2")
 animation = &"stand_left"
-frame_progress = 0.6517
+frame_progress = 0.932882
 script = ExtResource("2_l0b1j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
