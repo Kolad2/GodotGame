@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 enum Direction { NULL, LEFT, RIGHT, UP, DOWN }
-#enum Animation { STAND, WALK, RUN }
+enum StairsPosition { NULL, LOWER, CENTER, UPPER }
 
 # Сохраняем ссылку на AnimatedSprite2D
 @onready var animated_sprite = $AnimatedSprite2D
@@ -9,6 +9,7 @@ enum Direction { NULL, LEFT, RIGHT, UP, DOWN }
 @onready var area_stairs_lower: Area2D = $HitBox_StairsLower
 @onready var area_stairs_upper: Area2D = $HitBox_StairsUpper
 @export var direction: Direction = Direction.DOWN
+@onready var stairs_position = StairsPosition.NULL
 # @export var height: float = 0
 # @onready var game_node = get_tree().get_root()
 
@@ -40,40 +41,56 @@ func test():
 
 func _room_entered(room: Node2D):
 	if room is Room:
-		if self.height == room.get_floor():
+		if self.z_index == room.get_floor():
 			print("room_entered")
 			room.building.hide_upper_floors(self.z_index)
 			
 
 func _room_left(room: Node2D):
 	if room is Room:
-		if self.height == room.get_floor():
+		if self.z_index == room.get_floor():
 			print("room_left")
 			room.building.show_upper_floors(self.z_index)
 
 
 func _stairs_lower_entered(room: Node2D):
 	if room is Room:
-		print("stairs_entered")
-		var floor_num = room.get_floor()
-		self.set_stairs_up()
+		print("stairs_lower_entered")
+		print(self.stairs_position)
+		print(StairsPosition.NULL)
+		if self.stairs_position == StairsPosition.NULL:
+			self.set_stairs_up()
+			self.stairs_position = StairsPosition.LOWER
+		if self.stairs_position == StairsPosition.UPPER:
+			self.stairs_position = StairsPosition.CENTER
 		
 
 func _stairs_lower_left(room: Node2D):
 	if room is Room:
-		if room.z_index == self.height:
+		if self.stairs_position == StairsPosition.LOWER:
 			self.set_stairs_down()
+			self.stairs_position = StairsPosition.NULL
+			print("stairs_left_lower")
+		if self.stairs_position == StairsPosition.CENTER:
+			self.stairs_position = StairsPosition.UPPER
 
 
 func _stairs_upper_entered(room: Node2D):
 	if room is Room:
-		if (room.get_floor() + 1 > self.height) and (self.height > room.get_floor()):
-			pass
+		print("stairs_upper_entered")
+		if self.stairs_position == StairsPosition.NULL:
+			self.stairs_position = StairsPosition.UPPER
+		if self.stairs_position == StairsPosition.LOWER:
+			self.stairs_position = StairsPosition.CENTER
 	
 	
 func _stairs_upper_left(room: Node2D):
 	if room is Room:
-		pass
+		print("stairs_upper_left")
+		if self.stairs_position == StairsPosition.UPPER:
+			self.stairs_position = StairsPosition.NULL
+		if self.stairs_position == StairsPosition.CENTER:
+			self.stairs_position = StairsPosition.LOWER
 
 func _process(_delta):
 	var speed = 100
@@ -95,7 +112,6 @@ func set_stairs_up():
 	self.set_collision_mask_value(2, true)
 	self.set_collision_layer_value(2, true)
 	self.z_index = self.z_index + 1
-	self.height = self.z_index - 0.5
 
 
 func set_stairs_down():
@@ -104,7 +120,6 @@ func set_stairs_down():
 	self.set_collision_mask_value(2, false)
 	self.set_collision_layer_value(2, false)
 	self.z_index = self.z_index - 1
-	self.height = self.z_index
 
 
 func set_walk_animation(dir):

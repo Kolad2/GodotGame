@@ -30,8 +30,8 @@ collision_mask = 32
 shape = SubResource("CircleShape2D_askid")
 
 [node name="HitBox_StairsUpper" type="Area2D" parent="."]
-collision_layer = 32
-collision_mask = 32
+collision_layer = 64
+collision_mask = 64
 
 [node name="ActionShape" type="CollisionShape2D" parent="HitBox_StairsUpper"]
 shape = SubResource("CircleShape2D_askid")
