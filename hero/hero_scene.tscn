@@ -1,11 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://d03bvotq7tym5"]
+[gd_scene load_steps=8 format=3 uid="uid://d03bvotq7tym5"]
 
 [ext_resource type="Script" uid="uid://bqnankan1yi04" path="res://hero/Scripts/move.gd" id="1_askid"]
 [ext_resource type="SpriteFrames" uid="uid://b1cr6egu5v2ib" path="res://hero/famale_sprite.tres" id="1_uk5jc"]
+[ext_resource type="Shape2D" uid="uid://bb561yjrcmqrw" path="res://unit/step_hit_box.tres" id="2_83s5r"]
 [ext_resource type="Script" uid="uid://dyirpa3ew5exl" path="res://hero/Scripts/animated_sprite_2d.gd" id="2_fahc6"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_askid"]
-radius = 2.0
+[ext_resource type="Script" uid="uid://dfjpmim7pmhph" path="res://unit/scripts/room_agent.gd" id="3_83s5r"]
+[ext_resource type="Script" uid="uid://b2nnxpxess4v2" path="res://unit/scripts/stairs_agent.gd" id="5_h4i5v"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_askid"]
 radius = 4.0
@@ -13,32 +13,25 @@ height = 10.0
 
 [node name="HeroScene" type="CharacterBody2D"]
 script = ExtResource("1_askid")
+metadata/_custom_type_script = "uid://cghquyrrr40wg"
 metadata/_edit_lock_ = true
-
-[node name="RoomHitBox" type="Area2D" parent="."]
-collision_layer = 16
-collision_mask = 16
-
-[node name="ActionShape" type="CollisionShape2D" parent="RoomHitBox"]
-shape = SubResource("CircleShape2D_askid")
-
-[node name="HitBox_StairsLower" type="Area2D" parent="."]
-collision_layer = 32
-collision_mask = 32
-
-[node name="ActionShape" type="CollisionShape2D" parent="HitBox_StairsLower"]
-shape = SubResource("CircleShape2D_askid")
-
-[node name="HitBox_StairsUpper" type="Area2D" parent="."]
-collision_layer = 64
-collision_mask = 64
-
-[node name="ActionShape" type="CollisionShape2D" parent="HitBox_StairsUpper"]
-shape = SubResource("CircleShape2D_askid")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_askid")
+
+[node name="RoomAgent" type="Node2D" parent="."]
+script = ExtResource("3_83s5r")
+shape = ExtResource("2_83s5r")
+room_layer = 16
+metadata/_custom_type_script = "uid://dfjpmim7pmhph"
+
+[node name="StairsAgent" type="Node2D" parent="."]
+script = ExtResource("5_h4i5v")
+shape = ExtResource("2_83s5r")
+stairs_lower_layer = 32
+stairs_upper_layer = 64
+metadata/_custom_type_script = "uid://b2nnxpxess4v2"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
