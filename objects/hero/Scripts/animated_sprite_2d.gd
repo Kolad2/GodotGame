@@ -6,3 +6,11 @@ func _ready():
 	#animation = "Stand_up"  # Имя анимации
 	# Запускаем анимацию
 	play()
+
+
+func _process(_delta):
+	pass
+	#if animation == "walk_left":
+		#scale.x = -abs(scale.x)  # Отразить по горизонтали
+	#else:
+		#scale.x = abs(scale.x)

@@ -1,9 +1,9 @@
 extends CharacterBody2D
-var utils = preload("uid://cm1orhpn24cv3")
+
 
 @export var speed: float = 100.0
 @export var target_position: Vector2 = Vector2(250, 500)
-@export var direction: Utils.Direction = Utils.Direction.DOWN
+@export var direction: Direction = Direction.DOWN
 #
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
@@ -11,6 +11,7 @@ var utils = preload("uid://cm1orhpn24cv3")
 #
 var path_point: Vector2
 #
+var utils = preload("uid://cm1orhpn24cv3")
 func _ready():
 	navigation_agent.target_position = target_position
 	navigation_agent.velocity_computed.connect(Callable(_on_velocity_computed))
@@ -26,7 +27,7 @@ func _process(_delta):
 	navigation_agent.set_velocity(_velocity)
 	
 	var _direction = utils.get_direction(vec_direction)
-	if _direction == Utils.Direction.NULL:
+	if _direction == Direction.NULL:
 		utils.set_sprite_stand_animation(animated_sprite, self.direction)
 		return
 	else:

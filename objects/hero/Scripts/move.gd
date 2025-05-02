@@ -1,9 +1,8 @@
 extends Unit
 
-enum Direction { NULL, LEFT, RIGHT, UP, DOWN }
-
 # Сохраняем ссылку на AnimatedSprite2D
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var animation_player = $AnimationPlayer
 @onready var stairs_agent: StairsAgent = $StairsAgent
 @onready var room_agent: RoomAgent = $RoomAgent
 @export var direction: Direction = Direction.DOWN
@@ -52,9 +51,9 @@ func _stairs_descented(_room: Node2D):
 
 
 func _process(_delta):
-	var speed = 100
 	var move_input = GameInput.get_move_input()
-	var move_direction = get_direction(move_input)
+	var move_direction: Direction = Direction.from_vector_x4(move_input)
+	
 	if move_direction == Direction.NULL:
 		set_stand_animation(direction)
 		return
@@ -84,36 +83,12 @@ func set_stairs_down():
 
 
 func set_walk_animation(dir):
-	var stand_animation = {
-		Direction.RIGHT: "walk_right",
-		Direction.LEFT: "walk_left",
-		Direction.UP: "walk_up",
-		Direction.DOWN: "walk_down",
-		}
-	animated_sprite.animation = stand_animation[dir]
+	self.animation_player.current_animation = walk_animation[dir]
 
 
 func set_stand_animation(dir):
-	var stand_animation = {
-		Direction.RIGHT: "stand_right",
-		Direction.LEFT: "stand_left",
-		Direction.UP: "stand_up",
-		Direction.DOWN: "stand_down",
-		}
-	animated_sprite.animation = stand_animation[dir]
+	self.animation_player.current_animation = stand_animation[dir]
 
 
-func get_direction(norm_v):
-	if norm_v["x"] == 0 and norm_v["y"] == 0:
-		return Direction.NULL
-	if abs(norm_v["x"]) > abs(norm_v["y"]):
-		if norm_v["x"] > 0:
-			return Direction.RIGHT
-		else:
-			return Direction.LEFT
-	else:
-		if norm_v["y"] > 0:
-			return Direction.DOWN
-		else:
-			return Direction.UP
+
 	

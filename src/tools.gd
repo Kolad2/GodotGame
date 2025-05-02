@@ -1,7 +1,7 @@
 extends Object
 class_name Utils
 
-enum Direction { NULL, LEFT, RIGHT, UP, DOWN }
+
 enum Faicing {
 	NULL,
 	LEFT, DOWN_LEFT, DOWN, DOWN_RIGHT,
@@ -20,7 +20,7 @@ static func get_direction(velocity: Vector2):
 		if velocity.y > 0:
 			return Direction.DOWN
 		else:
-			return Direction.UP
+			return Direction.TOP
 
 static func get_faicing():
 	pass
@@ -29,7 +29,7 @@ static func set_sprite_walk_animation(animated_sprite: AnimatedSprite2D, dir: Di
 	var walk_animation = {
 		Direction.RIGHT: "walk_right",
 		Direction.LEFT: "walk_left",
-		Direction.UP: "walk_up",
+		Direction.TOP: "walk_top",
 		Direction.DOWN: "walk_down",
 		}
 	animated_sprite.animation = walk_animation[dir]
@@ -38,7 +38,7 @@ static func set_sprite_stand_animation(animated_sprite: AnimatedSprite2D, dir: D
 	var stand_animation = {
 		Direction.RIGHT: "stand_right",
 		Direction.LEFT: "stand_left",
-		Direction.UP: "stand_up",
+		Direction.TOP: "stand_up",
 		Direction.DOWN: "stand_down",
 		}
 	animated_sprite.animation = stand_animation[dir]
