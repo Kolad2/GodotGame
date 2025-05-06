@@ -1,8 +1,11 @@
-extends CharacterBody2D
+class_name Unit extends CharacterBody2D
 
-class_name Unit
+@export var health: float = 100.
+@export var max_health: float = 100. 
+@export var z_layer: int = 0
+@export var speed = 100
+@export var facing: Direction = Direction.DOWN
 
-const TAN_22_5 = 0.41421356237
 
 var walk_animation = {
 	Direction.TOP: "walk_top", Direction.TOP_RIGHT: "walk_top_right",
@@ -17,6 +20,3 @@ var stand_animation = {
 	Direction.DOWN: "stand_down", Direction.DOWN_LEFT: "stand_down_left",
 	Direction.LEFT: "stand_left",  Direction.TOP_LEFT: "stand_top_left",
 }
-
-@export var z_layer: int = 0
-var speed = 100

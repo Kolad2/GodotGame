@@ -5,7 +5,7 @@ extends Unit
 @onready var animation_player = $AnimationPlayer
 @onready var stairs_agent: StairsAgent = $StairsAgent
 @onready var room_agent: RoomAgent = $RoomAgent
-@export var direction: Direction = Direction.DOWN
+@onready var rotation_agent: RotationAgent = $RotationAgent
 
 
 func _ready():
@@ -52,16 +52,19 @@ func _stairs_descented(_room: Node2D):
 
 func _process(_delta):
 	var move_input = GameInput.get_move_input()
-	var move_direction: Direction = Direction.from_vector_x4(move_input)
+	var move_direction: Direction = Direction.from_vector(move_input)
 	
 	if move_direction == Direction.NULL:
-		set_stand_animation(direction)
+		set_stand_animation(facing)
 		return
 	else:
-		direction = move_direction
+		facing = move_direction
 	velocity = speed*move_input
 	move_and_slide()
-	set_walk_animation(direction)
+	set_walk_animation(facing)
+	
+	
+	self.rotation_agent.rotate_to(move_input.angle())
 
 
 func set_stairs_up():
